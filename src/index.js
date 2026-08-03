@@ -9,9 +9,23 @@ root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// Register service worker from public when in production
+if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+  window.addEventListener('load', () => {
+    const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+    navigator.serviceWorker.register(swUrl).then(registration => {
+      // Registration successful
+      console.log('ServiceWorker registrado com sucesso:', registration.scope);
+    }).catch(error => {
+      console.error('Falha ao registrar ServiceWorker:', error);
+    });
+  });
+}
