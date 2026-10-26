@@ -1,4 +1,4 @@
-const CACHE_NAME = 'primeiro-app-cache-v1';
+const CACHE_NAME = 'organiza-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
